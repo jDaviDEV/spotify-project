@@ -1,8 +1,12 @@
+import { Navbar } from "./Navbar"
+import { PlayLists } from "./PlayLists"
+
 const HomePage = () => {
   return (
-    <div>
-      <h1>HomePage</h1>
-    </div>
+    <>
+      <Navbar></Navbar>
+      <PlayLists></PlayLists>
+    </>
   )
 }
 

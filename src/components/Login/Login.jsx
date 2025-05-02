@@ -57,7 +57,7 @@ const Login = () => {
                             <a href="#" className="hover:underline">Forgot Password?</a>
                         </div>
 
-                        <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+                        <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-semibold rounded-md py-2 px-4 w-full"><Link to="/">Login</Link></button>
                     </form>
 
                     <div className="flex items-center justify-center space-x-2 my-5">
