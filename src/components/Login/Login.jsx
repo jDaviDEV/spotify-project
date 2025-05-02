@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import bgLoginImg from "./assets/bg-login-image2.jpg";
+import bgLoginImg from "./assets/bg-login-image.jpg";
+import { Link } from 'react-router';
 
 
 const Login = () => {
@@ -86,7 +87,7 @@ const Login = () => {
                     </div>
 
                     <div className="mt-6 text-blue-500 text-center">
-                        <a href="#" className="hover:underline">Sign up Here</a>
+                        <Link to="/register" className="hover:underline">Sign up Here</Link>
                     </div>
                 </div>
             </div>
