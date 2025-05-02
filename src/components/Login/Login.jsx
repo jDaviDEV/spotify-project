@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import bgLoginImg from "./assets/bg-login-image2.jpg";
-import "./login.css"
+
 
 const Login = () => {
     const [isPassVisible, setIsPassVisible] = useState(false);
