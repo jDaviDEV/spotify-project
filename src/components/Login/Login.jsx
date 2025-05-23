@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import bgLoginImg from "./assets/bg-login-image.jpg";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { redirectToAuthCodeFlow, getAccessToken } from '../../helpers/AuthSpotify';
+import { loginEmailPassword } from '../../helpers/FirebaseConnection';
 
 
 const Login = () => {
+    let navigate = useNavigate();
     const [isPassVisible, setIsPassVisible] = useState(false);
+    const [userEmail, setUserEmail] = useState("");
+    const [userPassword, setUserPassword] = useState("");
 
     const showPassHandler = () => {
         setIsPassVisible((isPassVisible) => !isPassVisible)
@@ -43,7 +47,7 @@ const Login = () => {
 
                         <div className="mb-4 bg-sky-100 relative">
                             <label htmlFor="email" className="block text-gray-600">Email</label>
-                            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autoComplete="off" placeholder="something@gmail.com" />
+                            <input onChange={(e) => { setUserEmail(e.target.value) }} type="email" id="email" name="email" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autoComplete="off" placeholder="something@gmail.com" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#333" stroke="#bbb" className="w-4 h-4 absolute right-4 top-9" viewBox="0 0 16 16">
                                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
                             </svg>
@@ -51,7 +55,7 @@ const Login = () => {
 
                         <div className="mb-4 relative">
                             <label htmlFor="password" className="block text-gray-800">Password</label>
-                            <input type={!isPassVisible ? "password" : "text"} id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autoComplete="off" placeholder="●●●●●●●●" />
+                            <input onChange={(e) => { setUserPassword(e.target.value) }} type={!isPassVisible ? "password" : "text"} id="password" name="password" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500" autoComplete="off" placeholder="●●●●●●●●" />
                             {passIcon}
                         </div>
 
@@ -64,7 +68,9 @@ const Login = () => {
                             <a href="#" className="hover:underline">Forgot Password?</a>
                         </div>
 
-                        <button type="submit" className="bg-red-500 hover:bg-red-700 text-white font-semibold rounded-md py-2 px-4 w-full"><Link to="/">Login</Link></button>
+                        <button onClick={() => {
+                            loginEmailPassword(userEmail, userPassword, navigate);
+                        }} type="button" className="bg-red-500 hover:bg-red-700 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
                     </form>
 
                     <div className="flex items-center justify-center space-x-2 my-5">
