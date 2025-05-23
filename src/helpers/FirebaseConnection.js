@@ -3,6 +3,7 @@ import {
     getAuth,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    updateProfile,
     AuthErrorCodes,
 } from "firebase/auth";
 
@@ -21,8 +22,8 @@ const auth = getAuth(app);
 
 export async function loginEmailPassword(email, password, navigate) {
     try {
-        const userCredential = await signInWithEmailAndPassword(auth,email,password);
-        if (userCredential){
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        if (userCredential) {
             navigate("/");
         }
         console.log(userCredential.user)
@@ -33,6 +34,16 @@ export async function loginEmailPassword(email, password, navigate) {
             alert(error.code)
         }
     }
+}
 
-    
+export async function createAccount(email, password, userName) {
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user,{displayName:userName});
+        console.log(userCredential.user)
+        alert("account created successfully");
+    } catch (error) {
+        alert(error.code)
+
+    }
 }
