@@ -41,7 +41,7 @@ const HomePage = () => {
     <>
       {token ? (<Navbar token={token}></Navbar>) : (<></>)}
       <MyPlayLists></MyPlayLists>
-      {/* <FeaturedPlayLists></FeaturedPlayLists> */}
+      <FeaturedPlayLists></FeaturedPlayLists>
     </>
   )
 }

@@ -1,5 +1,6 @@
+import { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -69,5 +70,24 @@ export async function addPlaylistToFirestore(playlistData) {
       console.error("Error adding document: ", e);
     }
   });
-  alert("Playlist Saved Successfuly")
+  alert("Playlist Saved Successfuly");
+}
+
+export default function useFetchDocs() {
+    const [playlists,setPlaylists] = useState(null);
+
+    useEffect(() => {
+      async function getPlaylists() {
+        const querySnapshot = await getDocs(collection(db, "playlists"));
+        let queryData = querySnapshot.docs.map((doc)=>{
+            return (doc.data())
+        })
+        setPlaylists(queryData);
+      }
+      getPlaylists();
+    }, [])
+    
+  return (
+    playlists
+  )
 }

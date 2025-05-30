@@ -10,7 +10,7 @@ export const MyPlayLists = () => {
       <div className="p-10">
         <div className="text-center py-8 text-6xl">
           <h1 className="text-shadow-lg text-shadow-fuchsia-950 font-extrabold text-blue-950">
-            {" "}
+            
             🎶 MY PLAYLISTS 🎶
           </h1>
         </div>
