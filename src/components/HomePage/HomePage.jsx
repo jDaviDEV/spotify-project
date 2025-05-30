@@ -5,7 +5,7 @@ import { getAccessToken, redirectToAuthCodeFlow } from "../../helpers/AuthSpotif
 import { useState, useEffect } from "react"
 
 const HomePage = () => {
-
+  
   const [token, setToken] = useState(null);
 
   useEffect(() => {

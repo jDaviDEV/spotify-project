@@ -12,8 +12,8 @@ function Profile() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen p-4 bg-black">
-        <div className="max-w-md w-full bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+      <div className="flex items-center justify-center min-h-screen p-4 bg-sky-100  ">
+        <div className="max-w-md w-full bg-white rounded-2xl overflow-hidden shadow-2xs transition-all duration-300 hover:shadow-2xl">
           <div className="h-32 bg-gradient-to-r from-purple-500 to-indigo-600 relative">
             <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
               <img
