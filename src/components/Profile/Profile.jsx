@@ -36,16 +36,7 @@ function Profile() {
                 </p>
                 <p className="text-sm text-gray-500">Playlists</p>
               </div>
-            </div>
-
-            <div className="mt-8 flex justify-center space-x-3">
-              <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out">
-                Follow
-              </button>
-              <button className="flex-1 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out">
-                Message
-              </button>
-            </div>
+            </div>           
 
             <div className="flex justify-center space-x-6 mt-6">
               <div className="text-center">
@@ -104,8 +95,13 @@ function Profile() {
             </div>
           </div>
 
-          <div className="my-8 w-full flex justify-center space-x-3">
-            <button onClick={()=>{navigate("/")}} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out cursor-pointer">
+          <div className="my-8 w-full px-6 flex justify-center space-x-3">
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+              className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition duration-150 ease-in-out cursor-pointer"
+            >
               Back
             </button>
           </div>
