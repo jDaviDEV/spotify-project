@@ -1,22 +1,10 @@
 import { Link } from "react-router";
 import useFetchProfile from "../../Hooks/useFetchProfile";
-import { useState } from "react";
 
-export const Navbar = () => {
-  const [userData, setUserData] = useState();
+export const Navbar = ({token}) => {
 
-  if (!userData) {
-    async function fillUserData() {
-      console.log(localStorage.getItem('accessToken'))
-      const data = await useFetchProfile(localStorage.getItem('accessToken'))
-      setUserData(data);
-    }
-    fillUserData();
-  } 
-
-  
-
-
+  const userData = useFetchProfile(token)
+  console.log(userData)
 
 return (
   <>
@@ -146,11 +134,11 @@ return (
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="size-8 rounded-full"
-                    src="#"
+                    src={userData?.images[1].url}
                     alt=""
                   />
                 </button>
-                <span className=""></span>
+                <span className="">{userData?.display_name}</span>
               </div>
 
               <div

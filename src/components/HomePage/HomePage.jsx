@@ -1,26 +1,44 @@
 import { Navbar } from "./Navbar"
 import { MyPlayLists } from "./MyPlayLists"
 import { FeaturedPlayLists } from "./FeaturedPlayLists"
-import { getAccessToken } from "../../helpers/AuthSpotify"
+import { getAccessToken, redirectToAuthCodeFlow } from "../../helpers/AuthSpotify"
+import { useState, useEffect } from "react"
 
 const HomePage = () => {
-  const clientId = "5c70a0c86c6745c094768654037b6ba4";
-  const params = new URLSearchParams(window.location.search);
-  const code = params.get("code");
 
-  if (!window.localStorage.getItem('accessToken')) {
-    async function getToken() {
-      const accessToken = await getAccessToken(clientId, code);
-      window.localStorage.setItem('accessToken', accessToken);
-      console.log(accessToken);
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    const clientId = "5c70a0c86c6745c094768654037b6ba4";
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+
+    const storedToken = localStorage.getItem("access_token");
+
+    if (storedToken) {
+      setToken(storedToken);
+      return;
     }
-    getToken();    
-  }
 
+    async function fetchAccessToken() {
+      if (!code) {
+        redirectToAuthCodeFlow(clientId);
+      } else {
+        const accessToken = await getAccessToken(clientId, code);
+        localStorage.setItem("access_token", accessToken); 
+        setToken(accessToken);
+
+        
+        window.history.replaceState({}, document.title, "/");
+      }
+    }
+
+    fetchAccessToken();
+  }, []);
 
   return (
     <>
-      <Navbar></Navbar>
+      {token ? (<Navbar token={token}></Navbar>) : (<></>)}
       <MyPlayLists></MyPlayLists>
       <FeaturedPlayLists></FeaturedPlayLists>
     </>
