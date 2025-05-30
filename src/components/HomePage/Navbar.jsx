@@ -76,24 +76,6 @@ return (
                 >
                   Spotify API Consumer
                 </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Team
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Projects
-                </a>
-                <a
-                  href="#"
-                  className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                >
-                  Calendar
-                </a>
               </div>
             </div>
           </div>
@@ -122,7 +104,7 @@ return (
             </button>
 
             <div className="relative ml-3">
-              <div>
+              <div className="text-center">
                 <button
                   type="button"
                   className="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
@@ -148,15 +130,15 @@ return (
                 aria-labelledby="user-menu-button"
                 tabIndex="-1"
               >
-                <a
-                  href="#"
+                <Link
+                  to="/profile"
                   className="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabIndex="-1"
-                  id="user-menu-item-0"
+                  id="user-menu-item-2"
                 >
-                  Your Profile
-                </a>
+                  Your profile
+                </Link>
                 <a
                   href="#"
                   className="block px-4 py-2 text-sm text-gray-700"
