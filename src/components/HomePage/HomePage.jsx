@@ -4,6 +4,7 @@ import { FeaturedPlayLists } from "./FeaturedPlayLists"
 import { getAccessToken, redirectToAuthCodeFlow } from "../../helpers/AuthSpotify"
 import { useState, useEffect } from "react"
 
+
 const HomePage = () => {
   
   const [token, setToken] = useState(null);
@@ -40,7 +41,7 @@ const HomePage = () => {
     <>
       {token ? (<Navbar token={token}></Navbar>) : (<></>)}
       <MyPlayLists></MyPlayLists>
-      <FeaturedPlayLists></FeaturedPlayLists>
+      {/* <FeaturedPlayLists></FeaturedPlayLists> */}
     </>
   )
 }
